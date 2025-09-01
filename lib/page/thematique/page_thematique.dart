@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../widget/HautParleur.dart';
 import '../../widget/OngletSwitch.dart';
 import '../../widget/BoutonExtensible.dart';
+import 'thematique_controle.dart';
 
 // Page thématique principale
 class PageThematique extends StatefulWidget {
@@ -147,8 +148,26 @@ class VosDroitsBloc extends StatelessWidget {
           Text('Contenu Vos droits', style: TextStyle(fontSize: 18)),
 
           BoutonExpansible(
-            titrePrincipal: "Permanences associatives spécialisées",
-            sousItems: ["Profil", "Paramètres", "Déconnexion"],
+            titrePrincipal: "Mes options",
+            sousItems: ["Page A", "Page B", "Page C"],
+            onItemTap: (item) {
+              if (item == "Page A") {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ThematiqueControle()),
+                );
+              } else if (item == "Page B") {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ThematiqueControle()),
+                );
+              } else if (item == "Page C") {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ThematiqueControle()),
+                );
+              }
+            },
           ),
         ],
       ),

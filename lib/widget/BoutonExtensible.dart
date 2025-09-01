@@ -3,12 +3,14 @@ import 'package:passerelle_tentative/widget/HautParleur.dart';
 
 class BoutonExpansible extends StatefulWidget {
   final String titrePrincipal;
+  final ValueChanged<String>? onItemTap;
   final List<String> sousItems;
 
   const BoutonExpansible({
     super.key,
     required this.titrePrincipal,
     required this.sousItems,
+    required this.onItemTap,
   });
 
   @override
@@ -108,12 +110,71 @@ class _BoutonExpansibleState extends State<BoutonExpansible>
                 ],
               ),
 
+              const SizedBox(height: 10),
+
               SizeTransition(
                 sizeFactor: _controller.drive(Tween<double>(begin: 0, end: 1)),
                 axisAlignment: -1.0,
                 child: Column(
                   children: widget.sousItems
-                      .map((item) => ListTile(title: Text(item)))
+                      .map(
+                        (item) => Material(
+                          // Nécessaire pour que InkWell affiche l'effet
+                          color: Colors.transparent,
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(
+                              8,
+                            ), // coins arrondis
+                            onTap: () {
+                              widget.onItemTap?.call(
+                                item,
+                              ); // action passée par l'utilisateur du widget
+                            },
+                            child: Container(
+                              height: MediaQuery.of(context).size.height * 0.05,
+                              margin: const EdgeInsets.symmetric(vertical: 4),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                border: Border.all(
+                                  color: Theme.of(
+                                    context,
+                                  ).colorScheme.secondary,
+                                  width: 1.5,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 12,
+                                ),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      item,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                        height: 1.0,
+                                        color: Theme.of(
+                                          context,
+                                        ).colorScheme.secondary,
+                                      ),
+                                    ),
+                                    Icon(
+                                      Icons.expand_more,
+                                      color: Theme.of(
+                                        context,
+                                      ).colorScheme.secondary,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
                       .toList(),
                 ),
               ),
