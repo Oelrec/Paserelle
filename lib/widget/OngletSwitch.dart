@@ -30,7 +30,7 @@ class _OngletSwitchState extends State<OngletSwitch> {
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
-    final double totalWidth = screenWidth * 0.9; // 90% de l'écran
+    final double totalWidth = screenWidth * 0.90; // 90% de l'écran
     final double halfWidth = totalWidth / 2;
 
     return Container(
