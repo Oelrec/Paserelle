@@ -28,13 +28,12 @@ class _PageThematiqueState extends State<PageThematique> {
 
   @override
   Widget build(BuildContext context) {
-    final double screenHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
       body: Stack(
         children: [
-          // IMAGE EN FOND
+          // IMAGE DE FOND
           Container(
+            height: 250,
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/photo_manif.jpg'),
@@ -44,7 +43,7 @@ class _PageThematiqueState extends State<PageThematique> {
             ),
           ),
 
-          // CONTENU
+          // CONTENU SCROLLABLE
           SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,7 +55,6 @@ class _PageThematiqueState extends State<PageThematique> {
                   padding: const EdgeInsets.only(left: 30.0),
                   child: TitreHautParleur(
                     title: "Régularisation",
-
                     textColor: Colors.white,
                     fontSize: 27,
                     hautParleurBlanc: true,
@@ -78,9 +76,8 @@ class _PageThematiqueState extends State<PageThematique> {
 
                 const SizedBox(height: 20),
 
-                // BLOC BLANC QUI PREND LE RESTE
+                // BLOC BLANC
                 Container(
-                  height: screenHeight - 180, // ajuste selon le header
                   width: double.infinity,
                   decoration: const BoxDecoration(
                     color: Colors.white,
@@ -100,6 +97,7 @@ class _PageThematiqueState extends State<PageThematique> {
                             onChanged: _onTabChanged,
                           ),
                         ),
+                        // Contenu scrollable interne
                         _pages[_selectedIndex],
                       ],
                     ),
