@@ -85,7 +85,7 @@ class _BoutonExpansibleState extends State<BoutonExpansible>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         HautParleur(
-                          blanc: false,
+                          color: Colors.black,
                           size: 35,
                           textspeaker: widget.titrePrincipal,
                         ),

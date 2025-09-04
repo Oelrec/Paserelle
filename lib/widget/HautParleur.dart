@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
 class HautParleur extends StatefulWidget {
-  final bool blanc;
+  final Color? color;
   final double size;
   final String textspeaker;
 
   const HautParleur({
     super.key,
-    required this.blanc,
+    this.color,
     required this.size,
     required this.textspeaker,
   });
@@ -58,7 +58,7 @@ class _HautParleurState extends State<HautParleur>
         scale: _controller,
         child: Icon(
           Icons.volume_up,
-          color: widget.blanc ? Colors.white : Colors.black,
+          color: widget.color ?? Theme.of(context).colorScheme.secondary,
           size: widget.size,
         ),
       ),
@@ -71,8 +71,8 @@ class TitreHautParleur extends StatelessWidget {
   final String? textSpeaker; // texte optionnel pour le HautParleur
   final Color textColor;
   final double fontSize;
-  final bool hautParleurBlanc;
   final double hautParleurSize;
+  final Color? hautParleurColor;
 
   const TitreHautParleur({
     super.key,
@@ -80,7 +80,7 @@ class TitreHautParleur extends StatelessWidget {
     this.textSpeaker,
     this.textColor = Colors.black,
     this.fontSize = 30,
-    this.hautParleurBlanc = false,
+    this.hautParleurColor,
     this.hautParleurSize = 30,
   });
 
@@ -99,7 +99,7 @@ class TitreHautParleur extends StatelessWidget {
         ),
         const SizedBox(width: 8),
         HautParleur(
-          blanc: hautParleurBlanc,
+          color: hautParleurColor ?? Colors.black,
           size: hautParleurSize,
           textspeaker: textSpeaker ?? title,
         ),

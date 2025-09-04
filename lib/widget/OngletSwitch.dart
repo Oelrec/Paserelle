@@ -67,7 +67,9 @@ class _OngletSwitchState extends State<OngletSwitch> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         HautParleur(
-                          blanc: _selectedIndex == 0,
+                          color: _selectedIndex == 0
+                              ? Colors.white
+                              : Colors.black,
                           size: 30,
                           textspeaker: widget.texteGauche,
                         ),
@@ -95,7 +97,9 @@ class _OngletSwitchState extends State<OngletSwitch> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         HautParleur(
-                          blanc: _selectedIndex == 1,
+                          color: _selectedIndex == 0
+                              ? Colors.black
+                              : Colors.white,
                           size: 30,
                           textspeaker: widget.texteDroite,
                         ),

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:passerelle_tentative/page/thematique/thematique_regularisation.dart';
+import 'package:passerelle_tentative/page/thematique/page_thematique.dart';
+
 import '../../widget/HautParleur.dart';
 import 'package:passerelle_tentative/page/thematique/thematique_controle.dart';
 import 'package:passerelle_tentative/page/thematique/thematique_francais.dart';
 import 'package:passerelle_tentative/page/thematique/thematique_sante.dart';
 import 'package:passerelle_tentative/page/thematique/thematique_travail.dart';
 import 'package:passerelle_tentative/page/thematique/thematique_vie_quotidienne.dart';
-import 'package:passerelle_tentative/page/thematique/page_thematique.dart';
 
 class HomePage extends StatefulWidget {
   final Function(int) onSelectPage;
@@ -103,8 +105,8 @@ class _HomePageState extends State<HomePage> {
                       TitreHautParleur(
                         title: "Prochaines permanances",
                         textColor: Colors.black,
+                        hautParleurColor: Colors.black,
                         fontSize: 27,
-                        hautParleurBlanc: false,
                         hautParleurSize: 30,
                       ),
 
@@ -121,9 +123,10 @@ class _HomePageState extends State<HomePage> {
 
                       TitreHautParleur(
                         title: "Les thématiques",
+                        hautParleurColor: Colors.black,
+
                         textColor: Colors.black,
                         fontSize: 27,
-                        hautParleurBlanc: false,
                         hautParleurSize: 30,
                       ),
                       SizedBox(height: 10),
@@ -191,7 +194,6 @@ class _HomePageState extends State<HomePage> {
                             "Les aides près de chez moi. Rendez-vous sur la page Annuaire pour découvrir les aides disponibles près de chez vous : associations, structures publiques, et bien plus encore.",
                         textColor: Colors.black,
                         fontSize: 27,
-                        hautParleurBlanc: false,
                         hautParleurSize: 30,
                       ),
 
@@ -270,7 +272,11 @@ class BoutonThematique extends StatelessWidget {
             Positioned(
               top: 8,
               right: 8,
-              child: HautParleur(blanc: true, size: 30, textspeaker: titre),
+              child: HautParleur(
+                color: Colors.white,
+                size: 30,
+                textspeaker: titre,
+              ),
             ),
 
             // Texte en bas
@@ -445,7 +451,7 @@ class EvenementCard extends StatelessWidget {
               left: 8,
               top: 1,
               child: HautParleur(
-                blanc: true,
+                color: Colors.white,
                 size: 30,
                 textspeaker: event.toSpeechText(), // 👈 dynamique
               ),

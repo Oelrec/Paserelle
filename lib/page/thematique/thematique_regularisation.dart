@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import "page_thematique.dart";
 
 class ThematiqueRegularisation extends StatelessWidget {
   const ThematiqueRegularisation({super.key});
